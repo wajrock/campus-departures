@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This project is a React application designed to display bus and metro line information for ESIR Engineering School's students. It fetches data from the STAR public transport API, processes it, and displays upcoming departures and other relevant information for different stops and lines.
 
-In the project directory, you can run:
+This project is a React application designed to be displayed on the hall TV of the Ecole Supérieure d'Ingénieurs de Rennes. The application provides real-time information on bus and metro schedules for stops close to the school from the STAR public transport API, processes it, and displays upcoming departures and other relevant information for different stops and lines.. It aims to keep students informed about the upcoming departures and enhance their commuting experience.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Data Fetching**: Retrieves real-time bus and metro schedules from STAR's API.
+- **Component-based Architecture**: Utilizes reusable React components for different parts of the UI.
+- **Error Handling**: Includes error handling for API requests and data processing.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To get this project up and running locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js (v14 or later)
+- npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    git clone https://github.com/wajrock/campus-departures.git
+    cd your-repository
+    ```
 
-### `npm run eject`
+2. **Install dependencies:**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the development server:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    This will start the development server and open the application in your default web browser.
 
-## Learn More
+### Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **`src`**: Contains the main application code.
+  - **`components`**: React components used in the application.
+  - **`utils`**: Utility functions and context providers.
+  - **`App.tsx`**: Main application component.
+  - **`index.tsx`**: Entry point of the application.
+- **`public`**: Contains static assets like the `index.html` file.
+- **`styles`**: CSS or SCSS files for styling the application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### API Endpoints
+
+The application fetches data from the following endpoints:
+
+- **Bus Data:**
+  - `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/tco-bus-circulation-passages-tr/records`
+  
+- **Metro Data:**
+  - `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/tco-metro-circulation-deux-prochains-passages-tr/records`
+
+### Environment Variables
+
+No environment variables are required for this project, but you may need to configure any environment-specific settings if deploying to a production environment.
+
+### Error Handling
+
+Errors during data fetching are handled and logged to the console. Ensure to check the browser console for any error messages if the application is not functioning as expected.
+
+### Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Commit your changes.
+4. Open a pull request with a clear description of your changes.
+
+### License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+### Contact
+
+For questions or feedback, please reach out to [thibaud.wajrock@outlook.com](mailto:thibaud.wajrock@outlook.com).
+
+---
+
+Happy coding!

@@ -1,0 +1,55 @@
+.round {
+    border-radius: 10rem;
+    height: 0.8rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.vert {
+        background-color: #d1fadf;
+        & .round-motion {
+            background-color: #039855;
+        }
+    }
+
+    &.orange {
+        background-color: #faecd1;
+        & .round-motion {
+            background-color: #986b03;
+        }
+    }
+
+    &.rouge {
+        background-color: #faddd1;
+        & .round-motion {
+            background-color: #982603;
+        }
+    }
+
+    &.gris {
+        background-color: #d5d5d5;
+        opacity: 0.5;
+        & .round-motion {
+            background-color: #727272;
+
+            animation: none;
+        }
+    }
+
+    &-motion {
+        height: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 10rem;
+        animation: motion 1.5s infinite ease-in-out;
+
+        @keyframes motion {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+    }
+}

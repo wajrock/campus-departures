@@ -1,0 +1,47 @@
+.stop-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        background-color: #173166;
+        gap: 1rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+
+        &-name,
+        &-walkingtime {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            & p {
+                color: rgba(230, 240, 255, 1);
+                font-size: 1rem;
+                font-weight: 800;
+            }
+        }
+
+        & svg {
+            height: 1rem;
+            color: rgba(230, 240, 255, 1);
+
+            &.stop-svg {
+                height: 2rem;
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        gap: 1.25rem;
+        height: 100%;
+        padding: 0.5rem;
+        background-color: #f1f1f1;
+        border-radius: 0 0 0.5rem 0.5rem;
+        justify-content: center;
+    }
+}
