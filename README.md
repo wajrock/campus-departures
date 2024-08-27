@@ -1,5 +1,7 @@
 # Project Name
 
+![campus-departures interface](public/cover.png)
+
 ## Description
 
 This project is a React application designed to be displayed on the hall TV of the Ecole Supérieure d'Ingénieurs de Rennes. The application provides real-time information on bus and metro schedules for stops close to the school from the STAR public transport API, processes it, and displays upcoming departures and other relevant information for different stops and lines.. It aims to keep students informed about the upcoming departures and enhance their commuting experience.
