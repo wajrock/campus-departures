@@ -18,7 +18,6 @@ To get this project up and running locally, follow these steps:
 
 ### Prerequisites
 
-- Node.js (v14 or later)
 - npm or yarn
 
 ### Installation
