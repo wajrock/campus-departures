@@ -54,6 +54,9 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
         const sortedTrips = sortArray(array);
     
         const newData: Data = { "0": [], "1": [] };
+
+        console.log(response);
+        
     
         // Process the response data
         sortedTrips.forEach((item) => {
