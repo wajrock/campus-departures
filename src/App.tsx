@@ -4,6 +4,8 @@ import Dashboard from "./Dashboard"; // Import the Dashboard component
 
 // Define the App component
 function App() {
+  
+  
   return (
     // Wrap the Dashboard component with DataProvider to provide context
     <DataProvider>

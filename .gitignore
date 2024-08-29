@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 tsconfig.json
-package.json
 package-lock.json
 .hintrc
+.gitignore

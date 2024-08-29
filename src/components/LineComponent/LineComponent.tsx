@@ -25,22 +25,29 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
   name,
   stop,
 }) => {
+  // Format the stop name
   const stopNameFormat =
     stop === "Beaulieu U." ? "Beaulieu - Université" : stop;
-  const isFirstRender = useRef(true);
+
+  // State variable to track if it's the first render of the component
+  const [isFirstRender,setFirstRender] = useState(false);
+
+// State variable to hold trips data
   const [data, setData] = useState<Data>({
     "0": [],
     "1": [],
   });
+
+  // function to mark a line component loaded
   const { markAsLoaded } = useDataContext();
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (isFirstRender) {
       return;
     }
 
     const fetchData = async () => {
+      
       try {
         // Construct the URL based on the condition
         const url =
@@ -48,15 +55,15 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
             ? `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/tco-bus-circulation-passages-tr/records?select=depart%2C%20idligne%2C%20sens%2C%20destination&refine=nomarret%3A${stopNameFormat}&refine=nomcourtligne%3A%22${name}%22`
             : `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/tco-metro-circulation-deux-prochains-passages-tr/records?select=departfirsttrain%2C%20departsecondtrain%2C%20idligne%2C%20sens%2C%20destination&refine=nomarret%3A${stopNameFormat}&refine=nomcourtligne%3A%22${name}%22`;
     
+
+            
         // Perform the GET request
-        const response = await axios.get(url);
-        const array: Trip[] = response.data["results"];
+        const responsee = await fetch(url);
+        const response = await responsee.json();
+        const array: Trip[] = response.results;
         const sortedTrips = sortArray(array);
     
         const newData: Data = { "0": [], "1": [] };
-
-        console.log(response);
-        
     
         // Process the response data
         sortedTrips.forEach((item) => {
@@ -79,6 +86,7 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
     
         // Update state and mark as loaded
         setData(newData);
+        setFirstRender(true);
         markAsLoaded(name);
       } catch (error) {
         // Handle the error

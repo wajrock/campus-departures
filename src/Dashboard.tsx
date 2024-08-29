@@ -13,6 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // if all lines data are loaded delete loader
+    
     if (loadedLines.length === totalLines) {
       setLoader(false);
     }

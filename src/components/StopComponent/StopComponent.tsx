@@ -15,6 +15,8 @@ const StopComponent: FunctionComponent<Stop> = ({
   walking_time,
   lines,
 }) => {
+
+  
     
   return (
     // Main container for the stop component
