@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import "./LineComponent.scss";
-import axios from "axios";
 import formatDate from "../../utils/formatDate";
 import sortArray from "../../utils/sortArray";
 import AttendanceComponent from "../AttendanceComponent/AttendanceComponent";
@@ -42,10 +41,12 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
   const { markAsLoaded } = useDataContext();
 
   useEffect(() => {
-    if (isFirstRender) {
-      return;
+    // Check if this is the first render.
+    if (isFirstRender) { // Set the state to true after the first render.
+      return; // Exit early if it's the first render.
     }
 
+    // Function to fetch data from the API.
     const fetchData = async () => {
       
       try {
@@ -98,7 +99,7 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
     const interval = setInterval(fetchData, 60000);
 
     return () => clearInterval(interval);
-  }, [name, stopNameFormat]);
+  }, [name, stopNameFormat,isFirstRender,markAsLoaded]);
 
   return (
     <div className={"line-wrap "+ (data["0"].length === 0 && data["1"].length === 0 ? "empty" : "")}>
@@ -130,7 +131,6 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
             >
               <path
                 d="M4.16666 9.99999H15.8333M15.8333 9.99999L9.99999 4.16666M15.8333 9.99999L9.99999 15.8333"
-                stroke="black"
                 stroke-width="1.66667"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -159,7 +159,6 @@ const LineComponent: FunctionComponent<{ name: string; stop: string }> = ({
             >
               <path
                 d="M4.16666 9.99999H15.8333M15.8333 9.99999L9.99999 4.16666M15.8333 9.99999L9.99999 15.8333"
-                stroke="black"
                 stroke-width="1.66667"
                 stroke-linecap="round"
                 stroke-linejoin="round"

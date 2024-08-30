@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import axios from "axios";
 import getTimeSlot from "../../utils/getTimeSlot"; 
 import getDayName from "../../utils/getDayName";
@@ -11,13 +11,12 @@ interface Attendance {
 
 // Define the `AttendanceComponent` functional component that takes `line` and `sens` as props.
 const AttendanceComponent: FunctionComponent<Attendance> = ({ line, sens }) => {
-  const isFirstRender = useRef(true); // A ref to keep track of whether this is the first render.
+  const [isFirstRender,setFirstRender] = useState(false); // A ref to keep track of whether this is the first render.
   const [attendanceLevel, setAttendanceLevel] = useState(""); // State to store the current attendance level.
 
   useEffect(() => {
     // Check if this is the first render.
-    if (isFirstRender.current) {
-      isFirstRender.current = false; // Set the ref to false after the first render.
+    if (isFirstRender) {
       return; // Exit early if it's the first render.
     }
 
@@ -42,6 +41,7 @@ const AttendanceComponent: FunctionComponent<Attendance> = ({ line, sens }) => {
         .get(url)
         .then((response) => {
           const attendanceLevelColor = response.data["results"][0]["couleur"]; // Extract the attendance level color from the API response.
+          setFirstRender(true); // Set the state to true after the first render.
           setAttendanceLevel(attendanceLevelColor); // Update the state with the fetched attendance level color.
         })
         .catch(console.error); // Log any errors that occur during the request.
@@ -53,7 +53,7 @@ const AttendanceComponent: FunctionComponent<Attendance> = ({ line, sens }) => {
 
     // Cleanup function to clear the interval when the component is unmounted or when dependencies change.
     return () => clearInterval(interval);
-  }, [line, sens]); // Dependencies for useEffect: triggers whenever `line` or `sens` changes.
+  }, [line, sens,isFirstRender]); // Dependencies for useEffect: triggers whenever `line` or `sens` changes.
 
   // Render the component.
   return (

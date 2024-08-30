@@ -63,8 +63,12 @@
             align-items: center;
 
             & p {
-                color: #173166dc;
+                color: #173166;
                 font-weight: 600;
+            }
+
+            & svg {
+                stroke: #173166;
             }
         }
 
