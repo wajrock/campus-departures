@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/campus-departures/static/css/main.ca70ed96.css",
-    "main.js": "/campus-departures/static/js/main.4ae9a2ad.js",
+    "main.css": "/campus-departures/static/css/main.1f5a6f71.css",
+    "main.js": "/campus-departures/static/js/main.02f7c7f2.js",
     "static/js/453.726d82ed.chunk.js": "/campus-departures/static/js/453.726d82ed.chunk.js",
     "static/media/map.jpg": "/campus-departures/static/media/map.2f7088cceb7be33a2713.jpg",
     "index.html": "/campus-departures/index.html",
-    "main.ca70ed96.css.map": "/campus-departures/static/css/main.ca70ed96.css.map",
-    "main.4ae9a2ad.js.map": "/campus-departures/static/js/main.4ae9a2ad.js.map",
+    "main.1f5a6f71.css.map": "/campus-departures/static/css/main.1f5a6f71.css.map",
+    "main.02f7c7f2.js.map": "/campus-departures/static/js/main.02f7c7f2.js.map",
     "453.726d82ed.chunk.js.map": "/campus-departures/static/js/453.726d82ed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca70ed96.css",
-    "static/js/main.4ae9a2ad.js"
+    "static/css/main.1f5a6f71.css",
+    "static/js/main.02f7c7f2.js"
   ]
 }
