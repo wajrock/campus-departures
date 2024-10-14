@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/campus-departures/static/css/main.8d9fc52d.css",
+    "main.css": "/campus-departures/static/css/main.b4f404e8.css",
     "main.js": "/campus-departures/static/js/main.59dda159.js",
     "static/js/453.726d82ed.chunk.js": "/campus-departures/static/js/453.726d82ed.chunk.js",
     "index.html": "/campus-departures/index.html",
-    "main.8d9fc52d.css.map": "/campus-departures/static/css/main.8d9fc52d.css.map",
+    "main.b4f404e8.css.map": "/campus-departures/static/css/main.b4f404e8.css.map",
     "main.59dda159.js.map": "/campus-departures/static/js/main.59dda159.js.map",
     "453.726d82ed.chunk.js.map": "/campus-departures/static/js/453.726d82ed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d9fc52d.css",
+    "static/css/main.b4f404e8.css",
     "static/js/main.59dda159.js"
   ]
 }
