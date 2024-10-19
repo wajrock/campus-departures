@@ -1,5 +1,5 @@
 import React from "react";
-import { DataProvider } from "./utils/DataContext"; // Import the DataProvider from DataContext
+import { DataProvider } from "./DataContext"; // Import the DataProvider from DataContext
 import Dashboard from "./Dashboard"; // Import the Dashboard component
 
 // Define the App component

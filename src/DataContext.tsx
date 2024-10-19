@@ -1,9 +1,10 @@
-import React, { useState, createContext, useContext, FunctionComponent, ReactNode } from 'react';
+import React, { useState, createContext, useContext, FunctionComponent, ReactNode, useEffect } from 'react';
 
 // Define an interface for the context data structure.
 // completedLines: an array of strings representing completed lines.
 // markAsCompleted: a function that takes an ID of type string and returns void.
 interface DataContextType {
+    loading:boolean;
     loadedLines: string[];
     markAsLoaded: (id: string) => void;
 }
@@ -22,15 +23,26 @@ const DataContext = createContext<DataContextType | null>(null);
 const DataProvider: FunctionComponent<DataProviderProps> = ({ children }) => {
   // State to keep track of completed lines.
   const [loadedLines, setLoadedLines] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [totalLines] = useState(6);
 
   // Function to add an ID to the list of completed lines.
   const markAsLoaded = (id: string) => {
     setLoadedLines((prev) => [...prev, id]);
   };
 
+   useEffect(() => {
+    // if all lines data are loaded delete loader
+    if (loadedLines.length === totalLines) {
+      setLoading(false);
+    }
+  }, [loadedLines, totalLines]);
+
+  
+
   // The provider component that passes down the context value to its children.
   return (
-    <DataContext.Provider value={{ loadedLines, markAsLoaded }}>
+    <DataContext.Provider value={{ loading,loadedLines, markAsLoaded }}>
       {children}
     </DataContext.Provider>
   );

@@ -1,20 +1,22 @@
-# Project Name
+# Campus Departures
 
-![campus-departures interface](public/cover.png)
+![campus-departures interface](https://wajrock.me/projects/campus-departures/cover.webp)
 
 ## Description
 
-This project is a React application designed to be displayed on the hall TV of the Ecole Supérieure d'Ingénieurs de Rennes. The application provides real-time information on bus and metro schedules for stops close to the school from the STAR public transport API, processes it, and displays upcoming departures and other relevant information for different stops and lines.. It aims to keep students informed about the upcoming departures and enhance their commuting experience.
+This project is a React application designed to be displayed in the buildings of the Beaulieu campus at the University of Rennes. The application provides real-time information on bus and metro schedules at the various stops around the campus, as well as information on the availability of bicycles and free spaces at the bike stations located on the campus. It processes this data and displays upcoming departures, bicycle availability, and other relevant information to keep students informed about their commuting options and enhance their travel experience.
 
 ## Features
 
-- **Data Fetching**: Retrieves real-time bus and metro schedules from STAR's API.
-- **Component-based Architecture**: Utilizes reusable React components for different parts of the UI.
-- **Error Handling**: Includes error handling for API requests and data processing.
+- **Real-time Data Fetching**: Retrieves bus, metro, and bike station data from STAR's API.
+- **Component-based Architecture**: Uses reusable React components for different parts of the user interface.
+- **Minimalist Design**: The interface is designed to be clean and minimalist, focusing on essential information.
+- **Error Handling**: Includes robust error handling for API requests and data processing.
+
 
 ## Getting Started
 
-To get this project up and running locally, follow these steps:
+To run this project locally, follow these steps:
 
 ### Prerequisites
 
@@ -52,7 +54,7 @@ To get this project up and running locally, follow these steps:
 - **`src`**: Contains the main application code.
   - **`components`**: React components used in the application.
   - **`utils`**: Utility functions and context providers.
-  - **`App.tsx`**: Main application component.
+  - **`Dashboard.tsx`**: Main application component.
   - **`index.tsx`**: Entry point of the application.
 - **`public`**: Contains static assets like the `index.html` file.
 - **`styles`**: CSS or SCSS files for styling the application.
@@ -67,22 +69,8 @@ The application fetches data from the following endpoints:
 - **Metro Data:**
   - `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/tco-metro-circulation-deux-prochains-passages-tr/records`
 
-### Environment Variables
-
-No environment variables are required for this project, but you may need to configure any environment-specific settings if deploying to a production environment.
-
-### Error Handling
-
-Errors during data fetching are handled and logged to the console. Ensure to check the browser console for any error messages if the application is not functioning as expected.
-
-### Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or fix.
-3. Commit your changes.
-4. Open a pull request with a clear description of your changes.
+- **Bike Station Data:**
+  - `https://data.explore.star.fr/api/explore/v2.1/catalog/datasets/vls-stations-etat-tr/records`
 
 ### License
 
@@ -91,7 +79,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ### Contact
 
 For questions or feedback, please reach out to [thibaud.wajrock@outlook.com](mailto:thibaud.wajrock@outlook.com).
-
----
-
-Happy coding!

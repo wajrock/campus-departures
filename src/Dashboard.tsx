@@ -1,89 +1,118 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
 import StopComponent from "./components/StopComponent/StopComponent";
-import getDayName from "./utils/getDayName";
-import getMonthName from "./utils/getMonthName";
-import { useDataContext } from "./utils/DataContext";
+import CycleComponent from "./components/LineComponent/CycleComponent";
 
 const Dashboard = () => {
-  const [date, setDate] = useState<string>(); // Stock the current date state
-  const [totalLines] = useState(6); //Stock the number of lines
-  const { loadedLines } = useDataContext(); // Get the number of loaded lines
-  const [loader, setLoader] = useState(true); // Set the state of loader
+  const [curentTime, setCurrentTime] = useState<string>(
+    new Date().toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  ); // Stock the current date state
+  const [buttonText, setButtonText] = useState<"Agrandir" | "Réduire">(
+    "Agrandir"
+  );
+
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+      // Si aucun élément n'est en plein écran, lancer le plein écran
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      }
+    } else {
+      // Si un élément est déjà en plein écran, quitter le plein écran
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
 
   useEffect(() => {
-    // if all lines data are loaded delete loader
-    
-    if (loadedLines.length === totalLines) {
-      setLoader(false);
-    }
-  }, [loadedLines, totalLines]);
+    const handleFullscreenChange = () => {
+      setButtonText(document.fullscreenElement ? "Réduire" : "Agrandir");
+    };
+
+    // Ajouter l'événement 'fullscreenchange'
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    // Nettoyage de l'événement lors du démontage du composant
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
 
   // Actualization of date every seconds
   useEffect(() => {
-    const showDate = () => {
-      const date = new Date();
-
-      setDate(
-        getDayName() +
-          " " +
-          date.getDate() +
-          " " +
-          getMonthName() +
-          " - " +
-          ("0" + date.getHours()).slice(-2) +
-          ":" +
-          ("0" + date.getMinutes()).slice(-2)
+    setCurrentTime(
+      new Date().toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    );
+    const interval = setInterval(() => {
+      setCurrentTime(
+        new Date().toLocaleTimeString("fr-FR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
       );
-    };
-    showDate();
-    const interval = setInterval(showDate, 1000);
+    }, 1000);
 
     return () => clearInterval(interval);
-  });
+  }, []);
 
   return (
-    <div className="app">
-      {loader && (
-        <div className="loader-block">
-          <div className="loader"></div>
+    <div className="dashboard-wrap bg-white">
+      <header className="dashboard-wrap-header headerDashboard">
+        <div className="headerDashboard-title">
+          <h1 className="text-slate-900">Départs bus et métros</h1>
         </div>
-      )}
 
-      <main className="app-content">
-        <section className="app-content-infos">
-          <header className="app-content-infos-header">
-            <div className="app-content-infos-header-date">
-              <p>{date}</p>
-            </div>
-            <h1 className="app-content-infos-header-title">
-              Prochain départs de Bus et Métro
-            </h1>
-          </header>
-          <div className="app-content-infos-map"></div>
-        </section>
-        <section className="app-content-grid">
-          <div className="app-content-grid-first-row">
-            <StopComponent
-              name={"Beaulieu INSA"}
-              walking_time={3}
-              lines={["C4", "14", "10"]}
-            />
+        <div className="headerDashboard-utilities gap-2">
+          <div className="py-2.5 px-6 text-sm border border-gray-300 rounded-full shadow-xs bg-white font-semibold text-gray-900 ">
+            {curentTime}
           </div>
-          <div className="app-content-grid-second-row">
-            <StopComponent
-              name={"Tournebride"}
-              walking_time={10}
-              lines={["C6", "67"]}
-            />
-            <StopComponent
-              name={"Beaulieu U."}
-              walking_time={9}
-              lines={["b"]}
-            />
-          </div>
-        </section>
+         
+          <button
+            onClick={toggleFullScreen}
+            className="headerDashboard-utilities-fullscreen  py-2.5 px-6 text-sm bg-slate-900 text-slate-100 font-bold rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-slate-950"
+          >
+            {buttonText}
+          </button>
+        </div>
+      </header>
+
+      <main className="dashboard-wrap-content contentDashboard">
+        <StopComponent
+          name={"Beaulieu INSA"}
+          walking_time={3}
+          lines={["C4", "14", "10"]}
+        />
+
+        <StopComponent
+          name={"Tournebride"}
+          walking_time={10}
+          lines={["C6", "67"]}
+        />
+
+        <div className="last-column">
+          <StopComponent name={"Beaulieu U."} walking_time={9} lines={["b"]} />
+          <CycleComponent/>
+        </div>
       </main>
+      <p className="copyrights text-slate-600 text-sm">
+        Interface imaginée et conçu par{" "}
+        <a
+          className="text-sm"
+          href="https://wajrock.me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Thibaud Wajrock
+        </a>{" "}
+        | Données fournies par le service STAR
+      </p>
     </div>
   );
 };

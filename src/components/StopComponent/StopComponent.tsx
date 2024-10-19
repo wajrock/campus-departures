@@ -19,42 +19,11 @@ const StopComponent: FunctionComponent<Stop> = ({
   
     
   return (
-    // Main container for the stop component
     <div className="stop-wrap">
-      <header className="stop-wrap-header">
-        {/* Container for the stop name and walking time */}
-        <div className="stop-wrap-header-name">
-          {/* SVG representing the stop */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 120 160"
-            fill="none"
-          >
-            <rect
-              x="54"
-              y="52.4998"
-              width="11.4773"
-              height="105.591"
-              rx="5.73864"
-              fill="currentColor"
-            />
-            <rect
-              x="2"
-              y="3"
-              width="116"
-              height="83"
-              rx="14.1818"
-              fill="currentColor"
-            />
-          </svg>
+      <header className="stop-wrap-header ">
+        <h2 className="stop-wrap-header-name text-slate-900">{name}</h2>
 
-          {/* Display the name of the stop */}
-          <p>{name}</p>
-        </div>
-
-        {/* Container for walking time information */}
-        <div className="stop-wrap-header-walkingtime">
-          {/* SVG representing walking time */}
+        <div className="stop-wrap-header-walkingtime text-slate-900">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 12 16"
@@ -65,14 +34,11 @@ const StopComponent: FunctionComponent<Stop> = ({
               fill="currentColor"
             />
           </svg>
-          {/* Display the walking time in minutes */}
           <p>{walking_time.toString() + " min"}</p>
         </div>
       </header>
 
-      {/* Main content section where line components are displayed */}
       <main className="stop-wrap-content">
-        {/* Map through the lines and render a LineComponent for each */}
         {lines.map((line, index) => (
           <LineComponent name={line} stop={name} key={index} />
         ))}
